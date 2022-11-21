@@ -6,13 +6,14 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 11:24:40 by aweaver           #+#    #+#             */
-/*   Updated: 2022/11/21 15:05:08 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/11/21 18:48:02 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
+#include "WrongCat.hpp"
 
 int main(void)
 {
@@ -43,5 +44,14 @@ int main(void)
 		for (int i = 0; i < 10; i++)
 			dogs[i].makeSound();
 		delete[] dogs;
+	}
+	// Wrong animal
+	{
+		WrongAnimal*	fox;
+		WrongCat		squirrel;
+		fox = new WrongCat();
+		fox->makeSound();
+		squirrel.makeSound();
+		delete fox;
 	}
 }
