@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 10:17:00 by aweaver           #+#    #+#             */
-/*   Updated: 2022/11/22 11:43:41 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/11/22 14:12:15 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,6 @@ Dog::~Dog(void)
 
 Dog::Dog(Dog const & source) : Animal()
 {
-	this->type = "Dog";
-	this->_brain = new Brain();
-	*(this->_brain) = *(source._brain);
 	std::cout << "Copy dog constructor." << std::endl;
 	*this = source;
 	return ;

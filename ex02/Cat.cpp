@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 10:22:34 by aweaver           #+#    #+#             */
-/*   Updated: 2022/11/22 11:48:43 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/11/22 14:12:00 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,6 @@ Cat::~Cat(void)
 
 Cat::Cat(Cat const & source) : Animal()
 {
-	this->type = "Cat";
-	this->_brain = new Brain();
-	*(this->_brain) = *(source._brain);
 	std::cout << "Copy cat constructor." << std::endl;
 	*this = source;
 	return ;
