@@ -2,7 +2,7 @@ NAME = polymorphism
 
 CXX = c++
 
-CXXFLAGS	= -Wall -Wextra -Werror -std=c++98
+CXXFLAGS	= -Wall -Wextra -Werror -std=c++98 -g3
 CPPFLAGS	= -MMD
 
 SRCS		=	main.cpp\
@@ -34,6 +34,8 @@ re: fclean
 test:	$(NAME)
 		./$(NAME)
 
+vtest: $(NAME)
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME)
 -include $(DEPS)
 
 .PHONY: all clean fclean re

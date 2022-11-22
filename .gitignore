@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+ex01/polymorphism
+
+# Vim
+*tags
+*.swp
+*.swo

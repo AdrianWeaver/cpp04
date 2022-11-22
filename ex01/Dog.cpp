@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 10:17:00 by aweaver           #+#    #+#             */
-/*   Updated: 2022/11/21 16:20:20 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/11/22 11:43:41 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,24 @@
 Dog::Dog(void) : Animal()
 {
 	this->type = "Dog";
+	this->_brain = new Brain();
 	std::cout << "Default dog constructor." << std::endl;
 	return ;
 }
 
 Dog::~Dog(void)
 {
-	delete this->_brain;
 	std::cout << "Default dog destructor." << std::endl;
+	delete this->_brain;
+	this->_brain = NULL;
 	return ;
 }
 
 Dog::Dog(Dog const & source) : Animal()
 {
 	this->type = "Dog";
+	this->_brain = new Brain();
+	*(this->_brain) = *(source._brain);
 	std::cout << "Copy dog constructor." << std::endl;
 	*this = source;
 	return ;
@@ -42,6 +46,10 @@ Dog & Dog::operator=(Dog const & rhs)
 	else
 	{
 		this->type = rhs.type;
+		if (this->_brain != NULL)
+			delete this->_brain;
+		this->_brain = new Brain();
+		*(this->_brain) = *(rhs._brain);
 	}
 	return (*this);
 }
@@ -57,3 +65,7 @@ std::string const& Dog::getType(void) const
 		return (this->type);
 }
 
+Brain & Dog::getBrain(void) const
+{
+	return (*(this->_brain));
+}

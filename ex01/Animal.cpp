@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 09:57:19 by aweaver           #+#    #+#             */
-/*   Updated: 2022/11/21 14:04:56 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/11/22 11:19:57 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ Animal::Animal(void)
 
 Animal::~Animal(void)
 {
-	this->type = "animal";
 	std::cout << "Default animal destructor." << std::endl;
 	return ;
 }
@@ -54,4 +53,3 @@ std::string const& Animal::getType(void) const
 {
 	return (this->type);
 }
-
