@@ -31,6 +31,7 @@
 *.out
 *.app
 ex01/polymorphism
+ex02/abstractClass
 
 # Vim
 *tags
