@@ -8,8 +8,9 @@ CPPFLAGS	= -MMD
 SRCS		=	main.cpp\
 				AMateria.cpp\
 				Ice.cpp\
-				Fire.cpp\
-				ICharacter.cpp
+				Cure.cpp\
+				ICharacter.cpp\
+				Character.cpp
 
 
 OBJS = $(SRCS:.cpp=.o)

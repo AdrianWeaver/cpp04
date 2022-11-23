@@ -1,36 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.hpp                                       :+:      :+:    :+:   */
+/*   IMateriaSource.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 12:31:10 by aweaver           #+#    #+#             */
-/*   Updated: 2022/11/23 11:05:53 by aweaver          ###   ########.fr       */
+/*   Created: 2022/11/23 12:40:37 by aweaver           #+#    #+#             */
+/*   Updated: 2022/11/23 12:54:50 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef AMATERIA_HPP
-# define AMATERIA_HPP
+#ifndef IMATERIASOURCE_HPP
+# define IMATERIASOURCE_HPP
 
 # include <iostream>
-# include "ICharacter.hpp"
 
-class ICharacter;
-class AMateria
+class AMateria;
+class IMateriaSource
 {
 	public:
-		AMateria(std::string const & type);
-		std::string const & getType(void) const;	//Returns the materia type
-		virtual AMateria* clone(void) const = 0;
-		virtual void use(ICharacter& target);
+		virtual ~IMateriaSource(void);
+		virtual void learnMateria(AMateria*) = 0;
+		virtual AMateria* createMateria(std::string const & type) = 0;
 	protected:
-		AMateria(void);
-		virtual ~AMateria(void);
-		AMateria(AMateria const& source);
-		AMateria & operator=(AMateria const& rhs);
-		std::string _type;
+		IMateriaSource(void);
+		IMateriaSource(IMateriaSource const& source);
+		IMateriaSource & operator=(IMateriaSource const & rhs);
 	private:
 };
+
+# include "AMateria.hpp"
 
 #endif

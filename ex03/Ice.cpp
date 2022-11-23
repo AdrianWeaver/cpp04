@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:25:34 by aweaver           #+#    #+#             */
-/*   Updated: 2022/11/22 17:56:53 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/11/23 11:08:28 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,22 +33,28 @@ Ice::Ice(Ice const &source) : AMateria("ice")
 
 Ice & Ice::operator=(Ice const& rhs)
 {
-	this->type = rhs.type;
+	this->_type = rhs._type;
 	return (*this);
 }
 
 Ice::Ice(std::string const& type) : AMateria("ice")
 {
+	(void)type;
 	return ;
+}
+
+AMateria* Ice::clone(void) const
+{
+	return (new Ice(*this));
 }
 
 void Ice::setType(void)
 {
-	this->type = "ice";
+	this->_type = "ice";
 	return ;
 }
 
-void use(ICharacter& target)
+void Ice::use(ICharacter& target)
 {
 	std::cout << "* shoots an ice bolt at " << target.getName() << "*"
 		<< std::endl;

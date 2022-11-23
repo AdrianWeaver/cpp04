@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 14:05:32 by aweaver           #+#    #+#             */
-/*   Updated: 2022/11/22 17:50:52 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/11/23 12:24:15 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,28 +32,25 @@ AMateria::AMateria(AMateria const &source)
 
 AMateria & AMateria::operator=(AMateria const& rhs)
 {
+	(void)rhs;
 	return (*this);
 }
 
 AMateria::AMateria(std::string const& type)
 {
-	this->type = type;
-}
-
-void AMateria::setType(std::string type)
-{
-	this->type = type;
-	return ;
+	std::cout << "AMateria constructor with string paramater" << std::endl;
+	this->_type = type;
 }
 
 std::string const& AMateria::getType(void) const
 {
-	return (this->type);
+	return (this->_type);
 }
 
-virtual void use(ICharacter& target)
+void AMateria::use(ICharacter& target)
 {
-	std::cout << "This is the use function in AMateria and should not be used.
+	(void)target;
+	std::cout << "This is the use function in AMateria and should not be used."
 		<< std::endl;
 	return ;
 }

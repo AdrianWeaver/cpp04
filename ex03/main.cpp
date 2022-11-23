@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ice.hpp                                            :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 16:25:39 by aweaver           #+#    #+#             */
-/*   Updated: 2022/11/23 11:08:27 by aweaver          ###   ########.fr       */
+/*   Created: 2022/11/23 09:20:44 by aweaver           #+#    #+#             */
+/*   Updated: 2022/11/23 12:36:34 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ICE_HPP
-# define ICE_HPP
-
 #include <iostream>
-#include "ICharacter.hpp"
+#include "Ice.hpp"
+#include "Cure.hpp"
+#include "Character.hpp"
 
-class Ice : public AMateria
+int main(void)
 {
-	public:
-		Ice(void);
-		~Ice(void);
-		Ice(Ice const& source);
-		Ice & operator=(Ice const& rhs);
-		Ice(std::string const & type);
-		void	setType(void);
-		AMateria* clone(void) const;
-		void use(ICharacter& target);
-	protected:
-	private:
-};
+	AMateria* ice = new Ice;
+	Character hero;
+	ICharacter* enemy = new Character;
 
-#endif
+	(*enemy).setName("Elena");
+	std::cout << "my nemesis is: " << (*enemy).getName() << std::endl;
+	hero.equip(ice);
+	hero.use(0, *enemy);
+	return (0);
+}
