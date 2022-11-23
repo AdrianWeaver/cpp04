@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 13:45:36 by aweaver           #+#    #+#             */
-/*   Updated: 2022/11/23 14:54:16 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/11/23 16:20:02 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ MateriaSource::MateriaSource(void) : IMateriaSource()
 
 MateriaSource::~MateriaSource(void)
 {
+	for (int i = 0; i < 4; i++)
+	{
+		if (this->_stored[i])
+			delete this->_stored[i];
+	}
 	std::cout << "Default MateriaSource destructor." << std::endl;
 	return ;
 }
@@ -43,7 +48,10 @@ MateriaSource & MateriaSource::operator=(MateriaSource const & rhs)
 		{
 			if (this->_stored[i])
 				delete this->_stored[i];
-			this->_stored[i] = rhs._stored[i]->clone();
+			if (rhs._stored[i] == NULL)
+				this->_stored[i] = NULL;
+			else
+				this->_stored[i] = rhs._stored[i]->clone();
 		}
 	}
 	(void)rhs;
@@ -52,14 +60,19 @@ MateriaSource & MateriaSource::operator=(MateriaSource const & rhs)
 
 void	MateriaSource::learnMateria(AMateria* toLearn)
 {
-	for (int i = 0;i < 4; i++)
+	if (toLearn == NULL)
+		return ;
+	for (int i = 0; i < 4; i++)
 	{
-		if (this->_stored[i] != NULL)
+		if (this->_stored[i] == NULL)
 		{
 			this->_stored[i] = toLearn;
 			return ;
 		}
 	}
+	delete toLearn;
+	std::cout << "This magic source is bursting with magic and cannot store any more magic."
+		<< std::endl;
 }
 
 AMateria*	MateriaSource::createMateria(std::string const& toCreate)

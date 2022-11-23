@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:25:34 by aweaver           #+#    #+#             */
-/*   Updated: 2022/11/23 14:16:25 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/11/23 15:13:09 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void Ice::setType(void)
 
 void Ice::use(ICharacter& target)
 {
-	std::cout << "* shoots an ice bolt at " << target.getName() << "*"
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *"
 		<< std::endl;
 	return ;
 }

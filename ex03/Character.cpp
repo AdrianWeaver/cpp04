@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 09:55:19 by aweaver           #+#    #+#             */
-/*   Updated: 2022/11/23 13:48:34 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/11/23 16:15:34 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,20 +71,28 @@ std::string const & Character::getName(void) const
 
 void	Character::equip(AMateria *m)
 {
+	if (m == NULL)
+		return ;
 	int	i;
 
 	i = 0;
-	while (i < 4 && _inventory[i])
-		i++;
-	if (i < 4)
-		_inventory[i] = m;
-	return ;
+	for (int i = 0; i < 4; i++)
+	{
+		if (this->_inventory[i] == NULL)
+		{
+			this->_inventory[i] = m;
+			return ;
+		}
+	}
+	delete m;
+	std::cout << "Character cannot withhold this much magic."
+		<< std::endl;
 }
 
 void	Character::unequip(int idx)
 {
 	if (idx >= 0 && idx < 4)
-		_inventory[idx] = NULL;
+		this->_inventory[idx] = NULL;
 	return ;
 }
 

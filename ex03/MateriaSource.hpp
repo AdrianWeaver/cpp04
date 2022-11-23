@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 13:44:43 by aweaver           #+#    #+#             */
-/*   Updated: 2022/11/23 14:22:45 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/11/23 15:02:20 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@
 class MateriaSource : public IMateriaSource
 {
 	public:
+		MateriaSource(void);
+		MateriaSource(MateriaSource const& source);
+		MateriaSource & operator=(MateriaSource const & rhs);
 		~MateriaSource(void);
 		void learnMateria(AMateria*);
 		AMateria* createMateria(std::string const & type);
 	protected:
-		MateriaSource(void);
-		MateriaSource(MateriaSource const& source);
-		MateriaSource & operator=(MateriaSource const & rhs);
 	private:
 		AMateria*	_stored[4];
 };
