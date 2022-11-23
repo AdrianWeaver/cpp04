@@ -6,7 +6,7 @@
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 09:55:19 by aweaver           #+#    #+#             */
-/*   Updated: 2022/11/23 13:01:03 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/11/23 13:48:34 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ Character::Character(void) : ICharacter()
 
 Character::~Character(void)
 {
+	for (int i = 0; i < 4; i++)
+		delete this->_inventory[i];
 	std::cout << "Default Character destructor." << std::endl;
 	return ;
 }

@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.hpp                                       :+:      :+:    :+:   */
+/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aweaver <aweaver@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 12:31:10 by aweaver           #+#    #+#             */
-/*   Updated: 2022/11/23 13:49:09 by aweaver          ###   ########.fr       */
+/*   Created: 2022/11/23 13:44:43 by aweaver           #+#    #+#             */
+/*   Updated: 2022/11/23 14:22:45 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef AMATERIA_HPP
-# define AMATERIA_HPP
+#ifndef MATERIASOURCE_HPP
+# define MATERIASOURCE_HPP
 
 # include <iostream>
-# include "ICharacter.hpp"
+# include "IMateriaSource.hpp"
+# include "AMateria.hpp"
 
-class ICharacter;
-class AMateria
+class MateriaSource : public IMateriaSource
 {
 	public:
-		virtual ~AMateria(void);
-		AMateria(std::string const & type);
-		std::string const & getType(void) const;	//Returns the materia type
-		virtual AMateria* clone(void) const = 0;
-		virtual void use(ICharacter& target);
+		~MateriaSource(void);
+		void learnMateria(AMateria*);
+		AMateria* createMateria(std::string const & type);
 	protected:
-		AMateria(void);
-		AMateria(AMateria const& source);
-		AMateria & operator=(AMateria const& rhs);
-		std::string _type;
+		MateriaSource(void);
+		MateriaSource(MateriaSource const& source);
+		MateriaSource & operator=(MateriaSource const & rhs);
 	private:
+		AMateria*	_stored[4];
 };
+
 
 #endif
